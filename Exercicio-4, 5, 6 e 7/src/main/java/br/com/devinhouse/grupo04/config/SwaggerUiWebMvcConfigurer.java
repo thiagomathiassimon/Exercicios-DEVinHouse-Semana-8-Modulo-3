@@ -1,6 +1,5 @@
 package br.com.devinhouse.grupo04.config;
 
-
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
