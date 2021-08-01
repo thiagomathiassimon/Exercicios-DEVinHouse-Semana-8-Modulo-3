@@ -1,0 +1,124 @@
+swagger: "2.0"
+info:
+  description: "Api de consulta de informações de usuários do github."
+  version: "1.0.0"
+  title: "API GitHub"
+host: "api.github.com"
+tags:
+- name: "users"
+  description: "Consulte suas infomrações"
+schemes:
+- "https"
+paths:
+  /users/{username}:
+    get:
+      tags:
+      - "users"
+      summary: "Obtenha as informações de seu usuário"
+      operationId: "findUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "O nome do usuário cujas informações objetiva consultar"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: object
+            items: 
+            $ref: "#/definitions/User"
+        "400":
+          description: "Usuário inválido"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:pets: "modify pets in your account"
+      read:pets: "read your pets"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+
+  User:
+    type: "object"
+    properties:
+      login:
+        type: "string"
+      id:
+        type: "integer"
+        format: "int64"
+      node_id:
+        type: "string"
+      avatar_url: 
+        type: "string"
+      gravatar_id:
+        type: "string"
+      url:
+        type: "string"
+      html_url:
+        type: "string"
+      follorwers_utl:
+        type: "string"
+      following_url: 
+        type: "string"
+      gists_url:
+        type: "string"
+      starred_url:
+        type: "string"
+      subscriptions_url:
+        type: "string"
+      organizations_url:
+        type: "string"
+      repos_url:
+        type: "string"
+      events_url:
+        type: "string"
+      received_events_url:
+        type: "string"
+      type:
+        type: "string"
+      site_admin:
+        type: "string"
+      name:
+        type: "string"
+      company:
+        type: "string"
+      blog:
+        type: "string"
+      location:
+        type: "string"
+      email:
+        type: "string"
+      hireable:
+        type: "string"
+      bio:
+        type: "string"
+      twitter_username:
+        type: "string"
+      public_repos:
+        type: "string"
+      public_gists:
+        type: "string"
+      followers:
+        type: "string"
+      following:
+        type: "string"
+      created_at:
+        type: "string"
+      updated_at:
+        type: "string"
+    xml:
+      name: "User"
+
