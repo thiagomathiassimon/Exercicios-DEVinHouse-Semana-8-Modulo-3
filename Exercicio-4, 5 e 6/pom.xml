@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?> 
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -13,12 +13,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>projeto05</name>
 	<description>Projeto 05 Devinhouse</description>
-	
+
 	<properties>
 		<java.version>11</java.version>
 		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
 	</properties>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -30,7 +30,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -44,7 +44,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		
+
 		<!-- Exclude Spring Boot's Default Logging -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -56,7 +56,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
+
 		<!-- Add Log4j2 Dependency -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -80,20 +80,34 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-	        <groupId>org.mapstruct</groupId>
-	        <artifactId>mapstruct</artifactId>
-	        <version>${org.mapstruct.version}</version>
-	    </dependency>
-	    
-	    <dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-	    
-	    <!-- KeyCloak -->
+
+		<!-- KeyCloak -->
 		<dependency>
 			<groupId>org.keycloak</groupId>
 			<artifactId>keycloak-spring-boot-starter</artifactId>
+		</dependency>
+
+		<!--SpringFox-->
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>3.0.0</version>
 		</dependency>
 
 		<dependency>
@@ -110,20 +124,20 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-	            <groupId>org.apache.maven.plugins</groupId>
-	            <artifactId>maven-compiler-plugin</artifactId>
-	            <configuration>
-	                <source>11</source>
-	                <target>11</target>
-	                <annotationProcessorPaths>
-	                    <path>
-	                        <groupId>org.mapstruct</groupId>
-	                        <artifactId>mapstruct-processor</artifactId>
-	                        <version>${org.mapstruct.version}</version>
-	                    </path>
-	                </annotationProcessorPaths>
-	            </configuration>
-	        </plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${org.mapstruct.version}</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
