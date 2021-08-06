@@ -40,7 +40,6 @@
             "description": "OK",
             "schema": {
               "type": "object",
-              "items": null,
               "$ref": "#/definitions/User"
             }
           },

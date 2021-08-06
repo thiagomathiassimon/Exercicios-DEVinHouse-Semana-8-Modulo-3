@@ -1,0 +1,503 @@
+<html>
+
+<head>
+  <title>Log in with Redocly</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Geneva, Verdana, Tahoma, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .main-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      max-width: 480px;
+      margin: auto;
+      min-height: 100vh;
+    }
+
+    .heading-section {
+      margin-bottom: 56px;
+      text-align: center;
+    }
+
+    .base-button {
+      outline: 0;
+      border: 0;
+      border-radius: 27px;
+      padding: 13px 46px;
+      min-width: 155px;
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      cursor: pointer;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .base-button:hover {
+      background-color: #fff;
+      color: #0044d4;
+    }
+
+    .base-button:disabled {
+      background-color: #eee;
+      border-color: #eee;
+      pointer-events: none;
+    }
+
+    @media only screen and (max-width: 540px) {
+      .base-button {
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+    }
+
+    .primary-button {
+      background-color: #0044d4;
+      border: 2px solid #0044d4;
+      color: #fff;
+    }
+
+    .light-button {
+      background-color: #fff;
+      color: #555;
+      border: 1px solid #d8d8d8;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    .light-button img {
+      margin-right: 16px;
+    }
+
+    .back-button {
+      background-color: transparent;
+      border: 0;
+      outline: 0;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      text-align: center;
+      border: 1px solid #0044d4;
+      padding: 1px 0;
+      margin-top: 8px;
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    .back-button svg {
+      width: 9px;
+      height: 12px;
+    }
+
+    .back-button path {
+      fill: #0044d4;
+    }
+
+    input {
+      outline: 0;
+      border: 0;
+      padding: 20px 30px;
+      margin-bottom: 32px;
+      background-color: #f4f4f4;
+      border-bottom: 1px solid #d8d8d8;
+      width: 100%;
+      font-size: 16px;
+      transition: border-color 0.25s ease;
+    }
+
+    input::placeholder {
+      color: rgba(0, 0, 0, 0.87);
+    }
+
+    input:focus {
+      border-color: #0044d4;
+    }
+
+    .error {
+      border-bottom-color: #f44336;
+    }
+
+    .email-error-block {
+      color: #f44336;
+      font-weight: 600;
+      display: none;
+    }
+
+    h3 {
+      color: #0044d4;
+      font-size: 38px;
+      font-weight: 600;
+      letter-spacing: 1.9px;
+      line-height: 1;
+      margin-top: 0;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    @media only screen and (max-width: 1600px) {
+      h4 {
+        font-size: 32px;
+      }
+    }
+
+    .email-preview {
+      margin: 0;
+      display: inline-block;
+      font-size: 16px;
+      letter-spacing: 0.9px;
+      color: #555;
+    }
+
+    .label {
+      display: inline-block;
+      text-align: left;
+      width: 100%;
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 8px;
+      margin-left: 16px;
+    }
+
+    .separator {
+      color: #555;
+      font-size: 18px;
+      letter-spacing: 0.9px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      text-align: center;
+      margin-top: 64px;
+      margin-bottom: 72px;
+    }
+
+    .separator span {
+      margin: 0 24px;
+    }
+
+    @media only screen and (max-width: 1600px) {
+      .separator {
+        margin-top: 48px;
+        margin-bottom: 48px;
+      }
+    }
+
+    .separator::before,
+    .separator::after {
+      content: '';
+      display: block;
+      background-color: #d8d8d8;
+      width: calc(100% - 30px);
+      height: 1px;
+    }
+
+    .separator::before {
+      right: 0;
+    }
+
+    .separator::after {
+      left: 0;
+    }
+
+    .underlined-link {
+      text-decoration: none;
+      border: 0;
+      text-align: center;
+      color: #0044d4;
+      font-weight: 600;
+      font-size: 12px;
+      border-bottom: 1px solid #0044d4;
+      padding-bottom: 2px;
+      cursor: pointer;
+    }
+
+    .caption {
+      font-size: 12px;
+      color: #555;
+      text-align: center;
+    }
+
+    .caption a {
+      color: #0044d4;
+    }
+
+    .password-screen,
+    .email-screen,
+    .forgot-password-screen {
+      text-align: center;
+    }
+
+    .password-screen,
+    .forgot-password-screen,
+    .forgot-password-screen-complete {
+      display: none;
+    }
+
+    .error-box {
+      background-color: #ff4642;
+      color: white;
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 20px;
+
+      display: flex;
+      flex-direction: row-reverse;
+      justify-items: end;
+      align-items: center;
+    }
+
+    .error-box>span {
+      display: inline-block;
+      flex: 1;
+      margin: 10px;
+    }
+
+    .error-box>svg {
+      height: 25px;
+      width: 25px;
+      margin-right: 15px;
+      display: inline-block;
+      margin: 10px 0 10px 10px;
+    }
+
+    .error-box>span:empty {
+      display: none;
+    }
+
+    .error-box>span:empty+svg {
+      display: none;
+    }
+  </style>
+  <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <div class="heading-section">
+      <h3>Log in with Redocly</h3>
+      <p class="email-screen">using your email address</p>
+      <div class="password-screen">
+        <button class="back-button back">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240.823 240.823">
+            <path
+              d="M57.633 129.007L165.93 237.268c4.752 4.74 12.451 4.74 17.215 0 4.752-4.74 4.752-12.439 0-17.179l-99.707-99.671 99.695-99.671c4.752-4.74 4.752-12.439 0-17.191-4.752-4.74-12.463-4.74-17.215 0L57.621 111.816c-4.679 4.691-4.679 12.511.012 17.191z" />
+          </svg>
+        </button>
+        <span class="email-preview"></span>
+      </div>
+      <p class="forgot-password-screen">
+        Enter the email address associated with your account and we will send you a link to reset
+        your password.
+      </p>
+      <p class="forgot-password-screen-complete">
+        The link to reset your password is successfully sent to your email.
+      </p>
+    </div>
+    <div class="error-box">
+      <span></span>
+      <svg viewBox="0 0 64 64">
+        <path fill="white"
+          d="M32,4A28,28,0,1,0,60,32,28,28,0,0,0,32,4ZM43.31,37.66a4,4,0,0,1-5.66,5.66L32,37.66l-5.66,5.66a4,4,0,0,1-5.66-5.66L26.34,32l-5.66-5.66a4,4,0,0,1,5.66-5.66L32,26.34l5.66-5.66a4,4,0,0,1,5.66,5.66L37.66,32Z" />
+      </svg>
+    </div>
+    <form id="main_form" action="https://api.redoc.ly/auth/auth0-pass" method="POST">
+      <div style="display:none;">
+        <input type="text" id="redirect_url" name="redirect_url" value="https://smart-cat-64.redoc.ly/redocly-license.js" />
+      </div>
+      <div class="email-screen">
+        <span class="label">Email address</span>
+        <input type="email" id="email" name="email" />
+        <span id="email-screen-email-error" class="email-error-block">Please enter a correct email<br /><br /></span>
+        <button type="button" id="next-button" class="base-button primary-button">Next</button>
+      </div>
+      <div class="password-screen">
+        <span class="label">Password</span>
+        <input type="password" name="password" id="password" />
+        <button type="button" id="login-button" class="base-button primary-button">Log in</button>
+        <div>
+          <button id="forgot-pass-button" class="underlined-link">Forgot password?</button>
+        </div>
+      </div>
+    </form>
+    <div class="forgot-password-screen">
+      <span class="label">Email address</span>
+      <input type="email" id="forgot_email" />
+      <span id="forgot-pass-email-error" class="email-error-block">Please enter a correct email<br /><br /></span>
+      <button id="forgot-pass-submit-button" class="base-button primary-button">Send</button>
+    </div>
+    <div class="forgot-password-screen-complete">
+      <button class="base-button primary-button back">Back to login</button>
+    </div>
+    <span class="separator"><span>or</span></span>
+    <button id="google-button" class="base-button light-button">
+      <img
+        src="data:image/png;base64,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"
+        alt="" /> Log in with Google
+    </button>
+    <button id="github-button" class="base-button light-button">
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAbCAYAAABvCO8sAAACRElEQVRIia2WTYiOURTHf/OOfMUYZcqEFBufIQuU8lGKZCFJJnsLZUU2VpM9FiwlTUqELCzGwkdKIitMEsYohvE1hHyMV2ecx1znnDueZ/KvU+97zzn//z33uffc20A5zAE2Ayv092SgBrwHHgJ3gHPArZJ8WawCLgP1knYP2AaULeQPmoDjFYSsdQIzHGsGEng3IKlqvcDSWGIILcCj/yBWWD+w0KkoGoHrSfBP4KJujIgssk+6nP2JrwdodmrAHkNwQ8fHAbuAl8Bb4CpwBjgFXAKeq9B+YJLm2O9/zIo1B5WcMDFj3BTzvr2GS1ZrHnqWBDuT2RWw/786mbyvxfyXY7IvFdzhKH7PbKT4EeRt0c/D1ODjfwFaXUp5jNbNYnnXSoWLAhrZDC/caHl8A04G0UtEcJobhi43Uh33g4zWmrYxi5obqY7GIKNJiD+64bjqqpgexH8QwVduGFaOpOMHHBav0ZlEbWqjCy+P2cBAwLm+YOgOnN2ZZfkXxpueXJiczYlFbnvieKPOuvbJ7ZkNYNGgFXQFYmJn03ip5Ls6juiS3EyC+4ALwDonA4uB08CzQCS1NTbxYOI8qp2mzyzJFCcHo4CngUBqnS4LmAA8SLr7fGAu0AGc1ysqh45ApLB3wMxM3uAVUlxT1zIVRTgUCNX1M20I4v/CMt04kvBZhaXCwy5yCJGg9NOtLjKDWcBtQ3AlDh2EFXyib1iHXM98DCwHdus1UxbyBDkALEieKJUhZ3ATsHqYTHmZtQFjh2UHfgE8jwOe/gBeEQAAAABJRU5ErkJggg=="
+        alt="" /> Log in with Github
+    </button>
+  </div>
+  <script type="text/javascript">
+    var REDIRECT_URI = 'https://api.redoc.ly/auth/auth0-callback';
+    var redirectTo = window.location.search.indexOf('redirect_to') > -1 ? window.location.search : '';
+    var webAuth = new auth0.WebAuth({
+      domain: 'auth.redoc.ly',
+      clientID: 'xNurbNrz4axZPra87tanomh1lHm8aZB8',
+      responseType: 'code',
+      audience: 'https://app.redoc.ly/login',
+      redirectUri: REDIRECT_URI + redirectTo,
+    });
+
+    var emailScreenElements = document.querySelectorAll('.email-screen');
+    var passwordScreenElements = document.querySelectorAll('.password-screen');
+    var forgotPassScreenElements = document.querySelectorAll('.forgot-password-screen');
+    var forgotPassScreenCompleteElements = document.querySelectorAll('.forgot-password-screen-complete');
+
+    document.getElementById('google-button').addEventListener('click', function () {
+      webAuth.authorize({
+        prompt: 'select_account',
+        connection: 'google-oauth2',
+      });
+    });
+
+    document.getElementById('github-button').addEventListener('click', function () {
+      webAuth.authorize({
+        connection: 'github',
+      });
+    });
+
+    function handleLogin() {
+      document.getElementById('login-button').setAttribute('disabled', true);
+      var form = document.getElementById('main_form');
+      form.submit();
+    }
+
+    document.getElementById('login-button').addEventListener('click', handleLogin);
+    document.getElementById('password').addEventListener('keydown', function (event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        handleLogin();
+      }
+    });
+
+    document.getElementById('forgot-pass-submit-button').addEventListener('click', handleForgot);
+    document.getElementById('forgot_email').addEventListener('keydown', function (event) {
+      if (event.keyCode === 13) { handleForgot(); }
+    });
+
+    document.getElementById('next-button').addEventListener('click', handleNext);
+    document.getElementById('email').addEventListener('keydown', function (event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        setTimeout(handleNext);
+      }
+    });
+
+    document.querySelectorAll('.back').forEach(function (el) {
+      el.addEventListener('click', function () { setScreen('email'); });
+    });
+
+    document.getElementById('forgot-pass-button').addEventListener('click', function (event) {
+      event.preventDefault();
+      setTimeout(() => {
+        setScreen('forgot-password');
+        document.getElementById('forgot_email').focus();
+      });
+    });
+
+    function handleForgot(event) {
+      event.preventDefault();
+      var emailInput = document.getElementById('forgot_email');
+      emailInput.className = '';
+      if (!isEmailValid(emailInput.value)) {
+        emailInput.className = 'error';
+        document.getElementById('forgot-pass-email-error').style.display = 'initial';
+        return;
+      }
+      webAuth.changePassword(
+        { email: emailInput.value, connection: 'Username-Password-Authentication' },
+        (err, res) => {
+          if (err) { return console.error(err); }
+          setScreen('forgot-password-complete');
+        }
+      );
+    }
+
+    function handleNext() {
+      var emailInput = document.getElementById('email');
+      emailInput.className = '';
+      if (!isEmailValid(emailInput.value)) {
+        emailInput.className = 'error';
+        document.getElementById('email-screen-email-error').style.display = 'initial';
+        return;
+      }
+      setScreen('password');
+      document.getElementById('password').focus();
+    }
+
+    function setScreen(screen) {
+      if (screen === 'email') {
+        hideElements(passwordScreenElements);
+        hideElements(forgotPassScreenElements);
+        hideElements(forgotPassScreenCompleteElements);
+        showElements(emailScreenElements);
+        return;
+      }
+
+      if (screen === 'password') {
+        hideElements(emailScreenElements);
+        hideElements(forgotPassScreenElements);
+        showElements(passwordScreenElements);
+        document.querySelector('.email-preview').innerHTML = document.getElementById('email').value;
+        return;
+      }
+
+      if (screen === 'forgot-password') {
+        hideElements(emailScreenElements);
+        hideElements(passwordScreenElements);
+        showElements(forgotPassScreenElements);
+        document.getElementById('forgot_email').value = document.getElementById('email').value;
+        return;
+      }
+
+      if (screen === 'forgot-password-complete') {
+        hideElements(forgotPassScreenElements);
+        showElements(forgotPassScreenCompleteElements);
+        return;
+      }
+    }
+
+    function showElements(elements) {
+      elements.forEach(function (element) {
+        element.style.display = 'block';
+      });
+    }
+
+    function hideElements(elements) {
+      elements.forEach(function (element) {
+        element.style.display = 'none';
+      });
+    }
+
+    function isEmailValid(email) {
+      return /^[a-z0-9._%+-]+@[a-z0-9.-]+[.][a-z]+$/i.test(
+        email,
+      );
+    }
+  </script>
+</body>
+
+</html>
